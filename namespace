@@ -1,0 +1,18 @@
+// 根据包名，在指定空间中创建对象
+// input namespace({a: {test: 1, b: 2}}, 'a.b.c.d')
+// output {a: {test: 1, b: {c: {d: {}}}}}
+
+
+function namespace(oNamespace, sPackage) {
+  const arr = sPackage.split('.');
+  let res = oNamespace;
+  for (let i = 0; i < arr.length; i++) {
+    if (typeof res[arr[i]] !== 'object') {
+      res[arr[i]] = {};
+    }
+
+    res = res[arr[i]];
+  }
+
+  return oNamespace;
+}
