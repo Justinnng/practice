@@ -1,0 +1,17 @@
+// 获取url中的参数
+
+function getUrlParam(sUrl, sKey) {
+    const arr1 = sUrl.split('?');
+    if (arr1.length > 0){
+        var param = {};
+        const arr2 = arr1[1].split('#')[0].split('&');
+        arr2.forEach((item,i) => {
+            var a = item.split('=');
+            param[a[0]] === void 0 ? param[a[0]] = a[1]: param[a[0]]=[].concat(param[a[0]], a[1])
+            
+        })
+        return sKey === void 0 ||sKey ==='' ? param: param[sKey]
+    } else {
+      return ''
+    }
+}
